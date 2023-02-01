@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello IndexController!
+{% endblock %}
+
+{% block body %}
+	<div class="container m-5">
+		<div class="row">
+			<div class="col">
+				<img class="card-img-top" src="{{asset('images/livre4.jpg')}}" alt="Card image cap">
+				<button type="button" class="btn btn-sm btn-outline-secondary">Ajouter au panier</button>
+			</div>
+			<div class="col">
+				<h4>TITRE DE LIVRE</h4>
+				<p class=" ">
+					Titre de livre</p>
+				<p class=" ">
+					Author</p>
+				<p class=" ">
+					Genre</p>
+				<p class=" ">
+					10 EUR</p>
+				<p class=" ">
+					LIVRAISON</p>
+				<div>
+					<p class=" ">
+						Format:</p>
+					<button type="button" class="btn btn-sm btn-outline-secondary">Poche</button>
+					<button type="button" class="btn btn-sm btn-outline-secondary">eBOOK</button>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div>Résumé</div>
+
+			<div class="col">
+				<p class=" ">Date de parution</p>
+				<p class=" ">
+					Taille</p>
+				<p class=" ">
+					Nombre de pages</p>
+				<p class=" ">
+					ISBN</p>
+			</div>
+			<div class="col">
+				<p class=" ">
+					Auteur</p>
+				<p class=" ">
+					Editeur</p>
+			</div>
+		</div>
+
+
+		<h4>LES PRODUITS EN LIEN AVEC CETTE CATEGORIE</h4>
+		<h4>AVIS DES CLIENTS</h4>
+
+		<div class="row">
+			<div class="col">
+				<button type="button" class="btn btn-sm btn-outline-secondary">Donner mon avi</button>
+			</div>
+			<div class="col">
+				<div class="d-flex flex-column border border-dark p-3">
+					<img class="card-img-top" src="{{asset('images/user.png')}}" style="height:30px; width:30px" alt="Card image cap">
+					<span>User 1</span>
+					<span>Avi</span>
+					<span>Commenté le 01.01.2023</span>
+					<span>Contenu de commentaire</span>
+				</div>
+			</div>
+
+			<div class="col">
+				<div class="d-flex flex-column border border-dark p-3">
+					<img class="card-img-top" src="{{asset('images/user.png')}}" style="height:30px; width:30px" alt="Card image cap">
+					<span>User 2</span>
+					<span>Avi</span>
+					<span>Commenté le 01.01.2023</span>
+					<span>Contenu de commentaire</span>
+				</div>
+			</div>
+
+
+			<div class="col">
+				<div class="d-flex flex-column border border-dark p-3">
+					<img class="card-img-top" src="{{asset('images/user.png')}}" style="height:30px; width:30px" alt="Card image cap">
+					<span>User 3</span>
+					<span>Avi</span>
+					<span>Commenté le 01.01.2023</span>
+					<span>Contenu de commentaire</span>
+				</div>
+			</div>
+
+		</div>
+
+
+	{% endblock %}

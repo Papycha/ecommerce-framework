@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Hello IndexController!
+{% endblock %}
+
+{% block stylesheets %}
+	<link href="{{ asset('css/c_styles.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+
+{% block body %}
+	<div class="container-fluid">
+
+		<h4 class="text-center">MOT DE PASSE OUBLIÉ</h4>
+
+
+		<div class="d-flex flex-column  justify-content-around mt-4 p-5 container border border-dark" style="width:450px; height:350px">
+
+			<span class="text-center">
+				Nous vous avons envoyé un mail pour réinitialiser votre mot de passe.
+			</span>
+			<span class="text-center">
+				<a href="#">Retour à la page connexion</a>
+			</span>
+		</div>
+	</div>
+{% endblock %}

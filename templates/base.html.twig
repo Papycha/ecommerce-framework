@@ -34,36 +34,19 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="#">ACCUEIL
+								<a class="nav-link active" aria-current="page" href="{{path('index')}}">ACCUEIL
 								</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">BOUTIQUE</a>
+								<a class="nav-link" href="{{path('index')}}">BOUTIQUE</a>
+
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="#">NOS SERVICES</a>
 							</li>
-
-
-							{# <li class="nav-item dropdown">
-																																																																																																																																																																																																																																																						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-																																																																																																																																																																																																																																																							Dropdown
-																																																																																																																																																																																																																																																						</a>
-																																																																																																																																																																																																																																																						<ul class="dropdown-menu">
-																																																																																																																																																																																																																																																							<li>
-																																																																																																																																																																																																																																																								<a class="dropdown-item" href="#">Action</a>
-																																																																																																																																																																																																																																																							</li>
-																																																																																																																																																																																																																																																							<li>
-																																																																																																																																																																																																																																																								<a class="dropdown-item" href="#">Another action</a>
-																																																																																																																																																																																																																																																							</li>
-																																																																																																																																																																																																																																																							<li><hr class="dropdown-divider"></li>
-																																																																																																																																																																																																																																																							<li>
-																																																																																																																																																																																																																																																								<a class="dropdown-item" href="#">Something else here</a>
-																																																																																																																																																																																																																																																							</li>
-																																																																																																																																																																																																																																																						</ul>
-																																																																																																																																																																																																																																																					</li> #}
-
 						</ul>
+
+
 						<form class="d-flex" role="search">
 							<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
 							<button class="btn btn-outline-success" type="submit">Search</button>
@@ -71,9 +54,10 @@
 					</div>
 				</div>
 				<a class="navbar-brand" href="#">
-					<img src="{{asset('images/user.png')}}" width="50px" alt="Card image cap">
+					<img src="{{asset('images/user.png')}}" width="50px" alt="user image">
 				</a>
-				<a class="navbar-brand" href="#">
+				<a class="navbar-brand" href="{{path('monPanier')}}">
+
 					<img src="{{asset('images/buy.png')}}" width="50px" alt="Card image cap">
 				</a>
 
@@ -82,26 +66,14 @@
 		</header>
 		{# HEADER END #}
 
-		{# <img
-																																																																																																																																																																												src={{asset('images/pb.jpg')}}> #}
-
-
-		{# <div class="card" style="width: 18rem;">
-																																																																																								<img class="card-img-top" src="..." alt="Card image cap">
-																																																																																								<div class="card-body">
-																																																																																								<h5 class="card-title">Card title</h5>
-																																																																																									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-																																																																																									<a href="#" class="btn btn-primary">Go somewhere</a>
-																																																																																								</div>
-																																																																																								</div> #}
-
 
 		{# CARTS BLOCK END#}
 
 
-			{% block body %}
+		{% block body %}
 
-				<div class="flex-shrink-0 p-3 bg-white" style="width: 280px;"> <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+			<div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+				<a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
 					<svg class="bi pe-none me-2" width="30" height="24">
 						<use xlink:href="#bootstrap"></use>
 					</svg>
@@ -237,7 +209,7 @@
 						</div>
 						<div class="col >
 							
-																																																	<a class=" navbar-brand" href=" #">
+																																																																																																																																					<a class=" navbar-brand" href=" #">
 							<img src="{{asset('images/instagram.png')}}" width="50px" alt="Card image cap">
 						</a>
 						<a class="navbar-brand" href="#">

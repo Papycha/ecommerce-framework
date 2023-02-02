@@ -2,11 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\ShoppingCartRepository;
+use App\Repository\OrderRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ShoppingCartRepository::class)]
-class ShoppingCart
+#[ORM\Entity(repositoryClass: OrderRepository::class)]
+#[ORM\Table(name: '`order`')]
+class Order
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -17,11 +18,10 @@ class ShoppingCart
     private ?string $sessionId = null;
 
     #[ORM\Column]
-    private ?int $count = null;
+    private ?int $status = null;
 
-    #[ORM\ManyToOne(inversedBy: 'shoppingCarts')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?product $product = null;
+    #[ORM\Column]
+    private ?int $user_id = null;
 
     public function getId(): ?int
     {
@@ -40,26 +40,26 @@ class ShoppingCart
         return $this;
     }
 
-    public function getCount(): ?int
+    public function getStatus(): ?int
     {
-        return $this->count;
+        return $this->status;
     }
 
-    public function setCount(int $count): self
+    public function setStatus(int $status): self
     {
-        $this->count = $count;
+        $this->status = $status;
 
         return $this;
     }
 
-    public function getProduct(): ?product
+    public function getUserId(): ?int
     {
-        return $this->product;
+        return $this->user_id;
     }
 
-    public function setProduct(?product $product): self
+    public function setUserId(int $user_id): self
     {
-        $this->product = $product;
+        $this->user_id = $user_id;
 
         return $this;
     }

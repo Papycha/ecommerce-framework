@@ -10,47 +10,73 @@
 				<img class="card-img-top" src="{{asset('images/livre4.jpg')}}" alt="Card image cap">
 				<button type="button" class="btn btn-sm btn-outline-secondary">Ajouter au panier</button>
 			</div>
-			<div class="col">
-				<h4>TITRE DE LIVRE</h4>
-				<p class=" ">
-					Titre de livre</p>
-				<p class=" ">
-					Author</p>
-				<p class=" ">
-					Genre</p>
-				<p class=" ">
-					10 EUR</p>
-				<p class=" ">
-					LIVRAISON</p>
-				<div>
+			{% for item in items %}
+
+				<div class="col">
+					<h4>TITRE DE LIVRE
+						{{item.name}}</h4>
+
 					<p class=" ">
-						Format:</p>
-					<button type="button" class="btn btn-sm btn-outline-secondary">Poche</button>
-					<button type="button" class="btn btn-sm btn-outline-secondary">eBOOK</button>
+						Titre de livre
+						{{item.name}}</p>
+
+					<p class=" ">
+						Author
+						{{item.Author}}</p>
+
+					<p class=" ">
+						Genre
+						{{item.Genre}}</p>
+
+					<p class=" ">
+						10 EUR
+						{{item.price}}</p>
+
+					<p class=" ">
+						LIVRAISON</p>
+					<div>
+						<p class=" ">
+							Format:</p>
+						<button type="button" class="btn btn-sm btn-outline-secondary">Poche</button>
+						<button type="button" class="btn btn-sm btn-outline-secondary">eBOOK</button>
+					</div>
 				</div>
 			</div>
-		</div>
 
 
-		<div class="row">
-			<div>Résumé</div>
+			<div class="row">
+				<div>Résumé
+					{{item.description}}</div>
 
-			<div class="col">
-				<p class=" ">Date de parution</p>
-				<p class=" ">
-					Taille</p>
-				<p class=" ">
-					Nombre de pages</p>
-				<p class=" ">
-					ISBN</p>
+
+				<div class="col">
+					<p class=" ">Date de parution
+						{{item.date_publication}}</p>
+
+					<p class=" ">
+						Taille
+					</p>
+					<p class=" ">
+						Nombre de pages
+						{{item.num_pages}}</p>
+
+					<p class=" ">
+						ISBN
+						{{item.ISBN}}</p>
+
+				</div>
+				<div class="col">
+					<p class=" ">
+						Auteur
+						{{item.Author}}</p>
+
+					<p class=" ">
+						Editeur
+						{{item.editor}}</p>
+
+				</div>
 			</div>
-			<div class="col">
-				<p class=" ">
-					Auteur</p>
-				<p class=" ">
-					Editeur</p>
-			</div>
-		</div>
+		{% endfor  %}
 
 
 		<h4>LES PRODUITS EN LIEN AVEC CETTE CATEGORIE</h4>

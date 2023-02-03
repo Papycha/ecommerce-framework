@@ -14,24 +14,28 @@
 
 				<div class="col">
 					<h4>TITRE DE LIVRE
-						{{item.name}}</h4>
+						{{item.titre}}</h4>
+
 
 					<p class=" ">
 						Titre de livre
-						{{item.name}}</p>
+						{{item.titre}}</p>
+
 
 					<p class=" ">
 						Author
-						{{item.Author}}</p>
+						{{item.auteur}}</p>
+
 
 					<p class=" ">
 						Genre
-						{{item.Genre}}</p>
+						{{item.genre}}</p>
+
 
 					<p class=" ">
 						10 EUR
-						{{item.price}}</p>
-
+						{# {{item.price}}</p> #}
+					</p>
 					<p class=" ">
 						LIVRAISON</p>
 					<div>
@@ -46,33 +50,43 @@
 
 			<div class="row">
 				<div>Résumé
-					{{item.description}}</div>
+					{{item.resume}}</div>
 
 
 				<div class="col">
 					<p class=" ">Date de parution
-						{{item.date_publication}}</p>
+						{# {{item.date_parution}} #}
+						{{item.getDateParution()}}
+
+{# $tempDate = DateTime::createFromFormat('j-M-Y', '15-Feb-2009');
+echo $tempDate->format('Y-m-d H:i:s'); #}
+					</p>
+
 
 					<p class=" ">
 						Taille
 					</p>
 					<p class=" ">
 						Nombre de pages
-						{{item.num_pages}}</p>
+						{{item.nombre_pages}}</p>
+
 
 					<p class=" ">
 						ISBN
-						{{item.ISBN}}</p>
+						{{item.isbn}}</p>
+
 
 				</div>
 				<div class="col">
 					<p class=" ">
 						Auteur
-						{{item.Author}}</p>
+						{{item.auteur}}</p>
+
 
 					<p class=" ">
 						Editeur
-						{{item.editor}}</p>
+						{{item.editeur}}</p>
+
 
 				</div>
 			</div>

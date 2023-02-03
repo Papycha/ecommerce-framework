@@ -61,6 +61,33 @@ class IndexController extends AbstractController
         ]);
     }
 
+
+    #[Route('/monPanier', name: 'monPanier')]
+    public function monPanier(): Response
+    {
+        return $this->render('\index\monPanier.html.twig', [
+            'controller_name' => 'monPanierController'
+        ]);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     #[Route('/connexion', name: 'connexion')]
     public function connexion(): Response
     {
@@ -101,13 +128,6 @@ class IndexController extends AbstractController
         ]);
     }
 
-    #[Route('/monPanier', name: 'monPanier')]
-    public function monPanier(): Response
-    {
-        return $this->render('\index\monPanier.html.twig', [
-            'controller_name' => 'monPanierController'
-        ]);
-    }
 
 
 
@@ -123,21 +143,18 @@ class IndexController extends AbstractController
 
 
 
-    // #[Route('/test', name: 'test')]
-    // public function test(): Response
+
+
+    // #[Route('/shopList', name: 'shopList')]
+    // public function shopList(): Response
     // {
-    //     return new Response('sdfsdf');
+    //     return $this->render('\index\shopList.html.twig', [
+    //         'controller_name' => 'shopList',
+    //         'title' => 'title of book',
+    //         'description' => 'description',
+    //         'price' => '100 '
+    //     ]);
     // }
-    #[Route('/shopList', name: 'shopList')]
-    public function shopList(): Response
-    {
-        return $this->render('\index\shopList.html.twig', [
-            'controller_name' => 'shopList',
-            'title' => 'title of book',
-            'description' => 'description',
-            'price' => '100 '
-        ]);
-    }
 
     // #[Route('/shopItem/{id}', name: 'shopItem')]
     // /**
@@ -155,20 +172,20 @@ class IndexController extends AbstractController
     //     ]);
     // }
 
-    /**
-     * @Route("/shop/item/{id<\d+>}", name="shopItem")
-     *
-     * @param int $id
-     * @return Response
-     */
-    public function shopItem(int $id): Response
-    {
-        return $this->render(
-            'index/shopItem.html.twig',
-            [
-                'controller_name' => 'shopItem' . $id,
+    // /**
+    //  * @Route("/shop/item/{id<\d+>}", name="shopItem")
+    //  *
+    //  * @param int $id
+    //  * @return Response
+    //  */
+    // public function shopItem(int $id): Response
+    // {
+    //     return $this->render(
+    //         'index/shopItem.html.twig',
+    //         [
+    //             'controller_name' => 'shopItem' . $id,
 
-            ]
-        );
-    }
+    //         ]
+    //     );
+    // }
 }

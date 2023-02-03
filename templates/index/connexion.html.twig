@@ -5,30 +5,31 @@
 
 {% block stylesheets %}
 	<link href="{{ asset('css/c_styles.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('css/custom.css') }}" rel="stylesheet"/>
 {% endblock %}
 
 {% block body %}
 	<div class="container mt-5">
 		<div class="row">
 			<div class="col-md-6 mx-auto">
-				<div class="card">
-					<div class="card-header bg-secondary bg-gradient text-white text-center py-4">
+				<div class="card bg-light">
+					<div class="card-header bg-secondary bg-gradient text-white text-center m-3 py-4">
 						<h3>Se connecter</h3>
 					</div>
 
 					<div class="card-body px-lg-5 pt-0">
 						<form action="#" method="post">
-							<div class="form-group">
+							<div class="form-group m-3">
 								<label for="email">Email</label>
 								<input type="email" name="email" id="email" class="form-control" placeholder="Entrez votre email">
 							</div>
 
-							<div class="form-group">
+							<div class="form-group m-3">
 								<label for="password">Mot de passe</label>
 								<input type="password" name="password" id="password" class="form-control" placeholder="Entrez votre mot de passe">
 							</div>
 
-							<div class="form-group d-flex justify-content-between align-items-center">
+							<div class="form-group d-flex justify-content-between align-items-center mt-5">
 								<a href="{{ path('motDePasseOublie') }}">Mot de passe oublié?</a>
 								<button type="submit" class="btn btn-primary">Se connecter</button>
 							</div>

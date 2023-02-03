@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 
-use App\Repository\ProductRepository;
+use App\Repository\ProduitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,9 +22,9 @@ class IndexController extends AbstractController
 
 
     #[Route('/', name: 'index')]
-    public function index(ProductRepository $ProductRepository): Response
+    public function index(ProduitRepository $ProduitRepository): Response
     {
-        $items = $ProductRepository->findAll();
+        $items = $ProduitRepository->findAll();
         return $this->render('\index\index.html.twig', [
             'title' => 'Books',
             'items' => $items
@@ -35,18 +35,19 @@ class IndexController extends AbstractController
     /**
      
      *
-     * @param Product $Product
+     * @param Produit $Produit
      * @return Response
      */
-    #[Route('/la', name: 'produit')]
-    public function product(Product $Product): Response
+    #[Route('/produit', name: 'produit')]
+    public function produit(ProduitRepository $Produit): Response
     {
-
+        $items = $Produit->findAll();
         return $this->render('\index\produit.html.twig', [
-            'title' => $Product->getName(),
-            'description'  => $Product->getDescription(),
-            'price'  => $Product->getPrice(),
-            'id'  => $Product->getId()
+
+            // 'title' => $Produit->getTitre(),
+            // 'description'  => $Produit->getResume(),
+            'items' => $items
+            // 'id'  => $Produit->getId()
 
 
         ]);

@@ -2,26 +2,26 @@
 
 namespace App\Entity;
 
-use App\Repository\ShoppingCartRepository;
+use App\Repository\PanierRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ShoppingCartRepository::class)]
-class ShoppingCart
+#[ORM\Entity(repositoryClass: PanierRepository::class)]
+class Panier
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 55)]
     private ?string $sessionId = null;
 
-    #[ORM\Column]
-    private ?int $count = null;
-
-    #[ORM\ManyToOne(inversedBy: 'shoppingCarts')]
+    #[ORM\ManyToOne(inversedBy: 'paniers')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?product $product = null;
+    private ?produit $produit = null;
+
+    #[ORM\Column]
+    private ?int $quantite = null;
 
     public function getId(): ?int
     {
@@ -40,26 +40,26 @@ class ShoppingCart
         return $this;
     }
 
-    public function getCount(): ?int
+    public function getProduit(): ?produit
     {
-        return $this->count;
+        return $this->produit;
     }
 
-    public function setCount(int $count): self
+    public function setProduit(?produit $produit): self
     {
-        $this->count = $count;
+        $this->produit = $produit;
 
         return $this;
     }
 
-    public function getProduct(): ?product
+    public function getQuantite(): ?int
     {
-        return $this->product;
+        return $this->quantite;
     }
 
-    public function setProduct(?product $product): self
+    public function setQuantite(int $quantite): self
     {
-        $this->product = $product;
+        $this->quantite = $quantite;
 
         return $this;
     }

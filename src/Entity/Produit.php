@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+
 use App\Repository\ProduitRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -115,11 +116,7 @@ class Produit
 
     public function getDateParution(): ?\DateTimeInterface
     {
-        $this->date_parution = $date_parution;
-
-        $date_parution->format('Y-m-d H:i:s');
-        return $this;
-        // return $this->date_parution;
+        return $this->date_parution;
     }
 
     public function setDateParution(\DateTimeInterface $date_parution): self

@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
-
+use App\Entity\Produit;
 use App\Repository\ProduitRepository;
+use Doctrine\ORM\Mapping\Id;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -35,20 +36,27 @@ class IndexController extends AbstractController
     /**
      
      *
-     * @param Produit $Produit
+     * @param Produit $id
      * @return Response
      */
-    #[Route('/produit', name: 'produit')]
-    public function produit(ProduitRepository $Produit): Response
+
+    #[Route('/produit/{id<\d+>}', name: 'produit')]
+    public function produit(Produit $id): Response
     {
-        $items = $Produit->findAll();
+        // $id = $Produit->findOneById($Produit->getId());
+        //$items = $Produit->find($id);
         return $this->render('\index\produit.html.twig', [
+            'titre' => $id->getTitre(),
+            // 'description' => $id->getDescription(),
+            // 'price' => $id->getPrice(),
+            'editeur' => $id->getEditeur(),
+            'auteur' => $id->getAuteur(),
+            'genre' => $id->getGenre(),
+            'resume' => $id->getResume(),
+            'nombrePages' => $id->getNombrePages(),
+            'isbn' => $id->getIsbn(),
 
-            // 'title' => $Produit->getTitre(),
-            // 'description'  => $Produit->getResume(),
-            'items' => $items
-            // 'id'  => $Produit->getId()
-
+            // 'id' => $Produit->getId()
 
         ]);
     }
@@ -148,9 +156,9 @@ class IndexController extends AbstractController
     // }
 
     /**
-     * @Route("/shopItem/{id<\d+>}", name="shopItem")
+     * @Route("/shop/item/{id<\d+>}", name="shopItem")
      *
-     * @param ShopItems $shopItems
+     * @param int $id
      * @return Response
      */
     public function shopItem(int $id): Response
@@ -159,10 +167,7 @@ class IndexController extends AbstractController
             'index/shopItem.html.twig',
             [
                 'controller_name' => 'shopItem' . $id,
-                'title' => 'titleshopItem',
-                'description' => 'description',
-                'price' => 'price',
-                'id' => 'id',
+
             ]
         );
     }

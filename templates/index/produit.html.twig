@@ -10,87 +10,89 @@
 				<img class="card-img-top" src="{{asset('images/livre4.jpg')}}" alt="Card image cap">
 				<button type="button" class="btn btn-sm btn-outline-secondary">Ajouter au panier</button>
 			</div>
-			{% for item in items %}
-
-				<div class="col">
-					<h4>TITRE DE LIVRE
-						{{item.titre}}</h4>
 
 
+			<div class="col">
+				<h4>
+					{# TITRE DE LIVRE #}
+					{{titre}}</h4>
+
+
+				<p
+					class=" ">
+					{# Titre de livre #}
+					{{titre}}</p>
+
+
+				<p class=" ">
+					Author :
+					{{auteur}}</p>
+
+
+				<p class=" ">
+					Genre :
+					{{genre}}</p>
+
+
+				<p class=" ">
+					10 EUR
+					{# {{item.price}}</p> #}
+				</p>
+				<p class=" ">
+					LIVRAISON : 5 EUR</p>
+
+				<div>
 					<p class=" ">
-						Titre de livre
-						{{item.titre}}</p>
-
-
-					<p class=" ">
-						Author
-						{{item.auteur}}</p>
-
-
-					<p class=" ">
-						Genre
-						{{item.genre}}</p>
-
-
-					<p class=" ">
-						10 EUR
-						{# {{item.price}}</p> #}
-					</p>
-					<p class=" ">
-						LIVRAISON</p>
-					<div>
-						<p class=" ">
-							Format:</p>
-						<button type="button" class="btn btn-sm btn-outline-secondary">Poche</button>
-						<button type="button" class="btn btn-sm btn-outline-secondary">eBOOK</button>
-					</div>
+						Format:</p>
+					<button type="button" class="btn btn-sm btn-outline-secondary">Poche</button>
+					<button type="button" class="btn btn-sm btn-outline-secondary">eBOOK</button>
 				</div>
 			</div>
+		</div>
 
 
-			<div class="row">
-				<div>Résumé
-					{{item.resume}}</div>
+		<div class="row">
+			<div class="mb-3">
+				Résumé :
+				{{resume}}</div>
 
 
-				<div class="col">
-					<p class=" ">Date de parution
-						{# {{item.date_parution}} #}
-						{{item.getDateParution()}}
-
-{# $tempDate = DateTime::createFromFormat('j-M-Y', '15-Feb-2009');
-echo $tempDate->format('Y-m-d H:i:s'); #}
-					</p>
+			<div class="col">
+				<p class=" ">Date de parution : 01.01.2021
+					{# {{item.date_parution}} #}
 
 
-					<p class=" ">
-						Taille
-					</p>
-					<p class=" ">
-						Nombre de pages
-						{{item.nombre_pages}}</p>
+				</p>
 
 
-					<p class=" ">
-						ISBN
-						{{item.isbn}}</p>
+				{# <p class=" ">
+																																																													Taille
+																																																												</p> #}
+				<p class=" ">
+					Nombre de pages :
+					{# {{getNombrePages()}} #}
+				</p>
 
 
-				</div>
-				<div class="col">
-					<p class=" ">
-						Auteur
-						{{item.auteur}}</p>
+				<p class=" ">
+					ISBN :
+					{{isbn}}</p>
 
 
-					<p class=" ">
-						Editeur
-						{{item.editeur}}</p>
-
-
-				</div>
 			</div>
-		{% endfor  %}
+			<div class="col">
+				<p class=" ">
+					Auteur :
+					{{auteur}}</p>
+
+
+				<p class=" ">
+					Editeur :
+					{{editeur}}</p>
+
+
+			</div>
+		</div>
 
 
 		<h4>LES PRODUITS EN LIEN AVEC CETTE CATEGORIE</h4>

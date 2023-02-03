@@ -1,6 +1,5 @@
 {% extends 'base.html.twig' %}
 
-
 {% block title %}Hello IndexController!
 {% endblock %}
 
@@ -8,18 +7,37 @@
 	<link href="{{ asset('css/c_styles.css') }}" rel="stylesheet"/>
 {% endblock %}
 
-
 {% block body %}
-	<div class="container-fluid m-5">
+	<div class="container mt-5">
+		<div class="row">
+			<div class="col-md-6 mx-auto">
+				<div class="card">
+					<div class="card-header bg-secondary bg-gradient text-white text-center py-4">
+						<h3>Se connecter</h3>
+					</div>
 
-		<h4 class="text-center">SE CONNECTER</h4>
+					<div class="card-body px-lg-5 pt-0">
+						<form action="#" method="post">
+							<div class="form-group">
+								<label for="email">Email</label>
+								<input type="email" name="email" id="email" class="form-control" placeholder="Entrez votre email">
+							</div>
 
-		<div class="d-flex flex-column  justify-content-between mt-4 p-5 container border border-dark" style="width:450px; height:350px">
-			<input type="text" name="email" id="email" class="form__input" placeholder="Email">
-			<input type="password" name="password" id="password" class="form__input" placeholder="Mot de passe">
-			<a href="#">Mot de passe oublié?</a>
-			<button type="button" class="btn btn-sm btn-outline-secondary">Se connecter</button>
-			<a href="#">Vous n’avez pas de compte ? S’inscrire</a>
+							<div class="form-group">
+								<label for="password">Mot de passe</label>
+								<input type="password" name="password" id="password" class="form-control" placeholder="Entrez votre mot de passe">
+							</div>
+
+							<div class="form-group d-flex justify-content-between align-items-center">
+								<a href="{{ path('motDePasseOublie') }}">Mot de passe oublié?</a>
+								<button type="submit" class="btn btn-primary">Se connecter</button>
+							</div>
+						</form>
+
+						<p class="text-center mt-4">Vous n'avez pas de compte ? <a href="{{ path('creerCompteP') }}">S'inscrire</a></p>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 {% endblock %}

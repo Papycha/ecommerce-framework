@@ -62,6 +62,7 @@ class IndexController extends AbstractController
     }
 
 
+
     #[Route('/monPanier', name: 'monPanier')]
     public function monPanier(): Response
     {

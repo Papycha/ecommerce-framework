@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\ProduitDetail;
+use App\Entity\ProductsDetails;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<ProduitDetail>
+ * @extends ServiceEntityRepository<ProductsDetails>
  *
- * @method ProduitDetail|null find($id, $lockMode = null, $lockVersion = null)
- * @method ProduitDetail|null findOneBy(array $criteria, array $orderBy = null)
- * @method ProduitDetail[]    findAll()
- * @method ProduitDetail[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method ProductsDetails|null find($id, $lockMode = null, $lockVersion = null)
+ * @method ProductsDetails|null findOneBy(array $criteria, array $orderBy = null)
+ * @method ProductsDetails[]    findAll()
+ * @method ProductsDetails[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ProduitDetailRepository extends ServiceEntityRepository
+class ProductsDetailsRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, ProduitDetail::class);
+        parent::__construct($registry, ProductsDetails::class);
     }
 
-    public function save(ProduitDetail $entity, bool $flush = false): void
+    public function save(ProductsDetails $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class ProduitDetailRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(ProduitDetail $entity, bool $flush = false): void
+    public function remove(ProductsDetails $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class ProduitDetailRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return ProduitDetail[] Returns an array of ProduitDetail objects
+//     * @return ProductsDetails[] Returns an array of ProductsDetails objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class ProduitDetailRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?ProduitDetail
+//    public function findOneBySomeField($value): ?ProductsDetails
 //    {
 //        return $this->createQueryBuilder('p')
 //            ->andWhere('p.exampleField = :val')

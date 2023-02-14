@@ -30,7 +30,7 @@ class CategoriesFixtures extends Fixture
         $category->setName($name);
         $manager->persist($category);
 
-        $catId = $this->addReference($this->counter, $category);
+        $catId = $this->addReference('cat-' . $this->counter, $category);
         $this->counter++;
 
 

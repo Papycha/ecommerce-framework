@@ -32,52 +32,65 @@
 	{# CAROUSEL END#}
 
 
+	<div class="container text-start m-3">
+		<h4>Catégories</h4>
+		<div class="row align-items-start">
+
+			{% for category in categories %}
+				{% if category.name is defined %}
+
+					<div class="col-12">
+						<a href="{{path('categorie_list', {name:category.name})}}">{{category.name}}</a>
+					</div>
+				{% endif %}
+
+			{% endfor %}
+		</div>
+	</div>
+
+
 	<h4>NOS MEILLEURES VENTES</h4>
 	<div class="album py-5 bg-light">
-		<div class="container">
+		<div
+			class="container">
+			{#{{dump()}} #}
+			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-2">
 
-			<div
-				class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-2">
+				{% for product in products %}
+					<div class="col">
+						<div class="card shadow-sm">
+							<img class="card-img-top" src="{{asset('images/livre1.png')}}" alt="Card image cap">
 
-				{# {% for item in items %} #}
-				<div class="col">
-					<div class="card shadow-sm">
-						<img class="card-img-top" src="{{asset('images/livre1.png')}}" alt="Card image cap">
+							<div class="card-body">
+								<p class="card-text">{{product.title}}
+								</p>
 
-						<div class="card-body">
-							<p
-								class="card-text">{# {{item.titre}} #}
-							</p>
-
-							<p
-								class="card-text">{# {{item.auteur}}#}
-							</p>
-
-
-							<p
-								class="card-text">{# {{item.genre}}#}
-							</p>
+								<p class="card-text">
+									{{product.author}}
+								</p>
 
 
-							<p
-								class="card-text">
-								{# {{item.price}} #}
-								EUR</p>
-
-							<div class="d-flex justify-content-between align-items-center">
-								<div class="btn-group">
-									<button type="button" class="btn btn-sm btn-outline-secondary">
-										<a class="" style="text-decoration:none" href=" ">Voir le produit</a>
+								<p class="card-text">
+									{{product.genre}}
+								</p>
 
 
-									</button>
+								<p
+									class="card-text">
+									{# {{item.price}} #}
+									EUR</p>
+
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="btn-group">
+										<button type="button" class="btn btn-sm btn-outline-secondary">
+											<a class="" style="text-decoration:none" href=" {{path('product_details', {id:product.id})}}  ">Voir le produit</a></button>
+									</div>
+									<small class="text-muted">9 mins</small>
 								</div>
-								<small class="text-muted">9 mins</small>
 							</div>
 						</div>
 					</div>
-				</div>
-				{# {% endfor  %} #}
+				{% endfor  %}
 
 
 			</div>

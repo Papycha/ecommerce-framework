@@ -2,7 +2,8 @@
 
 namespace App\Controller;
 
-
+use App\Repository\CategoriesRepository;
+use App\Repository\ProductsRepository;
 use Doctrine\ORM\Mapping\Id;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,12 +22,13 @@ class IndexController extends AbstractController
 
 
     #[Route('/', name: 'index')]
-    public function index(): Response
+    public function index(CategoriesRepository $categoriesRepository, ProductsRepository $productsRepository): Response
     {
 
         return $this->render('\index\index.html.twig', [
+            'categories' => $categoriesRepository->findBy([], ['id' => 'asc']),
+            'products' => $productsRepository->findBy([], ['id' => 'asc']),
             'title' => 'Books'
-
         ]);
     }
 

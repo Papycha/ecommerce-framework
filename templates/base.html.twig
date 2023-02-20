@@ -26,7 +26,8 @@
 		<header>
 			<nav class="navbar navbar-expand-lg bg-secondary bg-gradient">
 				<div class="container-fluid">
-					<a class="navbar-brand" href="#">
+					<a class="navbar-brand" href="{{path('index')}}">
+
 						<img src="{{asset('images/logo.png')}}" width="50px" alt="Card image cap">
 					</a>
 
@@ -37,10 +38,10 @@
 								<a class="nav-link active" aria-current="page" href="{{path('index')}}">ACCUEIL
 								</a>
 							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="{{path('index')}}">BOUTIQUE</a>
-
-							</li>
+							{# <li class="nav-item">
+																						<a class="nav-link" href="{{path('index')}}">BOUTIQUE</a>
+														
+																					</li> #}
 							<li class="nav-item">
 								<a class="nav-link" href="#">NOS SERVICES</a>
 							</li>
@@ -86,6 +87,15 @@
 			</nav>
 		</header>
 		{# HEADER END #}
+		{% if app.user and app.user.isVerified == false %}
+			<div class="alert alert-warning alert-dismissible" role="alert">
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				<div class="alert-message">
+					<strong>Votre compte n'est pas activé</strong>,
+					<a href="{{ path('resend_verif') }}">renvoyer le lien d'activation</a>
+				</div>
+			</div>
+		{% endif %}
 
 
 		{# CARTS BLOCK END#}
@@ -242,58 +252,58 @@
 					</div>
 				</footer>
 				{# <footer class="py-3 my-4">
-																									<a class="navbar-brand" href="#">
-																										<img src="{{asset('images/logo.png')}}" width="50px" alt="Card image cap">
-																									</a>
-																				
-																									<ul class="nav justify-content-center border-bottom pb-3 mb-3">
-																										<div class="row justify-content-between">
-																											<div class="col-4">
-																												<li class="nav-item">
-																													<a href="#" class="nav-link px-2 text-muted">Accueil</a>
-																												</li>
-																												<li class="nav-item">
-																													<a href="#" class="nav-link px-2 text-muted">Boutique</a>
-																												</li>
-																											</div>
-																											<div class="col-4">
-																												<li class="nav-item">
-																													<a href="#" class="nav-link px-2 text-muted">Services</a>
-																												</li>
-																												<li class="nav-item">
-																													<a href="#" class="nav-link px-2 text-muted">Collecte</a>
-																												</li>
-																												<li class="nav-item">
-																													<a href="#" class="nav-link px-2 text-muted">Rachat</a>
-																												</li>
-																				
-																											</div>
-																										</div>
-																				
-																				
-																									</ul>
-																				
-																									<div class="row justify-content-end">
-																				
-																										<div class="col">
-																											Mentions légales - 2023
-																										</div>
-																										<div class="col">
-																											
-																										<a class="navbar-brand" href="https://www.instagram.com/">																																																																																																																															<a class=" navbar-brand" href=" #">
-																											<img src="{{asset('images/instagram.png')}}" width="50px" alt="Card image cap">
-																										</a>
-																										<a class="navbar-brand" href="https://fr-fr.facebook.com/">
-																											<img src="{{asset('images/facebook.png')}}" width="50px" alt="Card image cap">
-																										</a>
-																										<a class="navbar-brand" href="https://www.linkedin.com/">
-																											<img src="{{asset('images/linkedin.png')}}" width="50px" alt="Card image cap">
-																										</a>
-																				
-																									</div>
-																				
-																				
-																								</div> #}
+																																					<a class="navbar-brand" href="#">
+																																						<img src="{{asset('images/logo.png')}}" width="50px" alt="Card image cap">
+																																					</a>
+																																
+																																					<ul class="nav justify-content-center border-bottom pb-3 mb-3">
+																																						<div class="row justify-content-between">
+																																							<div class="col-4">
+																																								<li class="nav-item">
+																																									<a href="#" class="nav-link px-2 text-muted">Accueil</a>
+																																								</li>
+																																								<li class="nav-item">
+																																									<a href="#" class="nav-link px-2 text-muted">Boutique</a>
+																																								</li>
+																																							</div>
+																																							<div class="col-4">
+																																								<li class="nav-item">
+																																									<a href="#" class="nav-link px-2 text-muted">Services</a>
+																																								</li>
+																																								<li class="nav-item">
+																																									<a href="#" class="nav-link px-2 text-muted">Collecte</a>
+																																								</li>
+																																								<li class="nav-item">
+																																									<a href="#" class="nav-link px-2 text-muted">Rachat</a>
+																																								</li>
+																																
+																																							</div>
+																																						</div>
+																																
+																																
+																																					</ul>
+																																
+																																					<div class="row justify-content-end">
+																																
+																																						<div class="col">
+																																							Mentions légales - 2023
+																																						</div>
+																																						<div class="col">
+																																							
+																																						<a class="navbar-brand" href="https://www.instagram.com/">																																																																																																																															<a class=" navbar-brand" href=" #">
+																																							<img src="{{asset('images/instagram.png')}}" width="50px" alt="Card image cap">
+																																						</a>
+																																						<a class="navbar-brand" href="https://fr-fr.facebook.com/">
+																																							<img src="{{asset('images/facebook.png')}}" width="50px" alt="Card image cap">
+																																						</a>
+																																						<a class="navbar-brand" href="https://www.linkedin.com/">
+																																							<img src="{{asset('images/linkedin.png')}}" width="50px" alt="Card image cap">
+																																						</a>
+																																
+																																					</div>
+																																
+																																
+																																				</div> #}
 			</footer>
 		</body>
 	</html>

@@ -37,15 +37,22 @@ class Products
     #[ORM\Column(length: 55)]
     private ?string $isbn = null;
 
+    #[ORM\Column]
+    private ?int $price = null;
+
+    #[ORM\Column]
+    private ?int $inStock = null;
+
+
+
     #[ORM\ManyToOne(inversedBy: 'products')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Categories $categories = null;
 
-    #[ORM\OneToMany(mappedBy: 'products', targetEntity: ProductsDetails::class)]
-    private Collection $productsDetails;
+    // #[ORM\OneToMany(mappedBy: 'products', targetEntity: ProductsDetails::class)]
+    // private Collection $productsDetails;
 
-    #[ORM\OneToMany(mappedBy: 'products', targetEntity: Images::class, orphanRemoval: true)]
-    private Collection $images;
+
 
     #[ORM\OneToMany(mappedBy: 'products', targetEntity: OrdersDetails::class)]
     private Collection $ordersDetails;
@@ -53,10 +60,15 @@ class Products
     #[ORM\OneToMany(mappedBy: 'products', targetEntity: Comments::class, orphanRemoval: true)]
     private Collection $comments;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image = null;
+
+
+
     public function __construct()
     {
-        $this->productsDetails = new ArrayCollection();
-        $this->images = new ArrayCollection();
+        // $this->productsDetails = new ArrayCollection();
+
         $this->ordersDetails = new ArrayCollection();
         $this->comments = new ArrayCollection();
     }
@@ -150,6 +162,30 @@ class Products
         return $this;
     }
 
+    public function getPrice(): ?int
+    {
+        return $this->price;
+    }
+
+    public function setPrice(int $price): self
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    public function getInStock(): ?int
+    {
+        return $this->inStock;
+    }
+
+    public function setInStock(int $inStock): self
+    {
+        $this->inStock = $inStock;
+
+        return $this;
+    }
+
     public function getCategories(): ?Categories
     {
         return $this->categories;
@@ -162,65 +198,36 @@ class Products
         return $this;
     }
 
-    /**
-     * @return Collection<int, ProductsDetails>
-     */
-    public function getProductsDetails(): Collection
-    {
-        return $this->productsDetails;
-    }
+    // /**
+    //  * @return Collection<int, ProductsDetails>
+    //  */
+    // public function getProductsDetails(): Collection
+    // {
+    //     return $this->productsDetails;
+    // }
 
-    public function addProductsDetail(ProductsDetails $productsDetail): self
-    {
-        if (!$this->productsDetails->contains($productsDetail)) {
-            $this->productsDetails->add($productsDetail);
-            $productsDetail->setProducts($this);
-        }
+    // public function addProductsDetail(ProductsDetails $productsDetail): self
+    // {
+    //     if (!$this->productsDetails->contains($productsDetail)) {
+    //         $this->productsDetails->add($productsDetail);
+    //         $productsDetail->setProducts($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removeProductsDetail(ProductsDetails $productsDetail): self
-    {
-        if ($this->productsDetails->removeElement($productsDetail)) {
-            // set the owning side to null (unless already changed)
-            if ($productsDetail->getProducts() === $this) {
-                $productsDetail->setProducts(null);
-            }
-        }
+    // public function removeProductsDetail(ProductsDetails $productsDetail): self
+    // {
+    //     if ($this->productsDetails->removeElement($productsDetail)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($productsDetail->getProducts() === $this) {
+    //             $productsDetail->setProducts(null);
+    //         }
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    /**
-     * @return Collection<int, Images>
-     */
-    public function getImages(): Collection
-    {
-        return $this->images;
-    }
-
-    public function addImage(Images $image): self
-    {
-        if (!$this->images->contains($image)) {
-            $this->images->add($image);
-            $image->setProducts($this);
-        }
-
-        return $this;
-    }
-
-    public function removeImage(Images $image): self
-    {
-        if ($this->images->removeElement($image)) {
-            // set the owning side to null (unless already changed)
-            if ($image->getProducts() === $this) {
-                $image->setProducts(null);
-            }
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, OrdersDetails>
@@ -278,6 +285,18 @@ class Products
                 $comment->setProducts(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }

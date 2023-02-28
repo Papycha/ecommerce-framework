@@ -1,12 +1,79 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Details de
+{% block title %}
 	{{product.title}}
 {% endblock %}
 
 {% block body %}
-	<h1>Details de
-		{{product.title}}</h1>
+	<div class="container">
+
+		<div class="col">
+			<div class="card shadow-sm">
+				<img class="card-img-top" src="{{asset('images/livre1.png')}}" alt="Card image cap">
+
+				<div class="card-body">
+					<h1>
+						Details de
+						{{product.title}}
+					</h1>
+
+					<p class="card-text">
+						Categorie:
+						{# {{ dump(product) }} #}
+
+
+						{{product.categories.name}}
+
+					</p>
+
+					<p class="card-text">
+						{{product.author}}
+					</p>
+
+
+					<p class="card-text">
+						{{product.genre}}
+					</p>
+
+
+					<p class="card-text">
+						{{product.price}}
+
+						EUR</p>
+					<p class="card-text">
+						{{product.inStock}}
+
+						in stock</p>
+
+
+					{% if product.inStock >0 %}
+
+						<div class="d-flex justify-content-between align-items-center">
+							<div class="btn-group">
+								<button type="button" class="btn btn-sm btn-outline-secondary">
+									<a class="" style="text-decoration:none" href=" {{path('product_details', {id:product.id})}}  ">Acheter le produit</a>
+								</button>
+							</div>
+						</div>
+
+					{% else %}
+						<div class="d-flex justify-content-between align-items-center">
+							Not in stock
+							<button type="button" class="btn btn-sm btn-outline-secondary">
+								<a class="" style="text-decoration:none" href=" {{path('index' )}}  ">Retour tout livres</a>
+							</button>
+
+						</div>
+					{% endif %}
+
+					{# {{ dump(product.productsDetails) }} #}
+
+
+				</div>
+			</div>
+		</div>
+
+	</div>
 
 
 {% endblock %}

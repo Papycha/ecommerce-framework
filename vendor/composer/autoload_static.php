@@ -113,7 +113,6 @@ class ComposerStaticInitf181f4eb825fac2f3b9f60a17d3be634
             'Psr\\EventDispatcher\\' => 20,
             'Psr\\Container\\' => 14,
             'Psr\\Cache\\' => 10,
-            'ProxyManager\\' => 13,
             'PhpParser\\' => 10,
             'PHPStan\\PhpDocParser\\' => 21,
         ),
@@ -121,10 +120,6 @@ class ComposerStaticInitf181f4eb825fac2f3b9f60a17d3be634
         array (
             'Monolog\\' => 8,
             'Masterminds\\' => 12,
-        ),
-        'L' => 
-        array (
-            'Laminas\\Code\\' => 13,
         ),
         'E' => 
         array (
@@ -471,10 +466,6 @@ class ComposerStaticInitf181f4eb825fac2f3b9f60a17d3be634
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
         ),
-        'ProxyManager\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/friendsofphp/proxy-manager-lts/src/ProxyManager',
-        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
@@ -490,10 +481,6 @@ class ComposerStaticInitf181f4eb825fac2f3b9f60a17d3be634
         'Masterminds\\' => 
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
-        ),
-        'Laminas\\Code\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/laminas/laminas-code/src',
         ),
         'Egulias\\EmailValidator\\' => 
         array (

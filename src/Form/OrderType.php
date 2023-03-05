@@ -25,20 +25,19 @@ class OrderType extends AbstractType
                 'choices' => $user->getAddresses(),
                 'expanded' => true
             ])
-            ->add('carriers', EntityType::class, [
-                'label' => 'Choisissez votre transporteur',
-                'required' => true,
-                'class' => Carrier::class,
-                'choice_label' => 'carrierLabel',
-                'expanded' => true
-            ])
+            // ->add('carriers', EntityType::class, [
+            //     'label' => 'Choisissez votre transporteur',
+            //     'required' => true,
+            //     'class' => Carrier::class,
+            //     'choice_label' => 'carrierLabel',
+            //     'expanded' => true
+            // ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Passer au paiment', 
+                'label' => 'Passer au paiment',
                 'attr' => [
                     'class' => "btn btn-outline-success btn-block"
                 ]
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

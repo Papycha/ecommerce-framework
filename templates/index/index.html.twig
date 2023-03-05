@@ -1,35 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello IndexController!
+{% block title %}Notre boutique - Marsyclebook
+
 {% endblock %}
 {# hdjfhsdjfkhdsjfk #}
 {% block body %}
-
-	{# CAROUSEL #}
-	<div id="carouselExample" class="carousel slide mb-5">
-		<div class="carousel-inner">
-			<div class="carousel-item active">
-				<img src="{{asset('images/pb2.jpg')}} " class="d-block w-100" style="height:560px;" alt="...">
-
-
-			</div>
-			<div class="carousel-item">
-				<img src="{{asset('images/pb2.jpg')}}" class="d-block w-100" style="height:560px;" alt="...">
-			</div>
-			<div class="carousel-item">
-				<img src="{{asset('images/pb2.jpg')}}" class="d-block w-100" style="height:560px;" alt="...">
-			</div>
-		</div>
-		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="visually-hidden">Previous</span>
-		</button>
-		<button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="visually-hidden">Next</span>
-		</button>
-	</div>
-	{# CAROUSEL END#}
 
 
 	<div class="container text-start m-3">
@@ -49,7 +24,7 @@
 	</div>
 
 
-	<h4>NOS MEILLEURES VENTES</h4>
+	<h4>NOS LIVRES</h4>
 	<div class="album py-5 bg-light">
 		<div
 			class="container">
@@ -59,9 +34,16 @@
 				{% for product in products %}
 					<div class="col">
 						<div class="card shadow-sm">
-							<img class="card-img-top" src="{{asset('images/livre1.png')}}" alt="Card image cap">
+
 
 							<div class="card-body">
+								{% for image in product.images %}
+									<div>
+										<img src="{{ asset('images/products/mini/300x300-' ~ image.name ) }}" alt="Image" width="150">
+									</div>
+								{% endfor %}
+
+
 								<p class="card-text">{{product.title}}
 								</p>
 

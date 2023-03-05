@@ -21,7 +21,7 @@ class IndexController extends AbstractController
     // }
 
 
-    #[Route('/', name: 'index')]
+    #[Route('/notre_boutique', name: 'index')]
     public function index(CategoriesRepository $categoriesRepository, ProductsRepository $productsRepository): Response
     {
 
@@ -32,10 +32,10 @@ class IndexController extends AbstractController
         ]);
     }
 
-    #[Route('info', name: 'about')]
+    #[Route('/', name: 'about')]
     public function about(): Response
     {
-        return $this->render('home/about.html.twig');
+        return $this->render('index/about.html.twig');
     }
 
 

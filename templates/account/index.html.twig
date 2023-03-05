@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte
+{% endblock %}
+
+{% block body %}
+	<h2>Mon compte</h2>
+	Bonjour
+	{{ app.user.firstname }}.
+	<hr>
+	{% for message in app.flashes('notice') %}
+		<div class="alert alert-success">
+			{{ message }}
+		</div>
+	{% endfor %}
+	<div
+		class="list-group">
+		{# {% if is_granted('ROLE_ADMIN') %}
+														        <a href="{{ path('admin') }}" class="list-group-item list-group-item-action">
+														            Back office
+														        </a> 
+														        {% endif %} #}
+		<a href="{{ path('account_modif') }}" class="list-group-item list-group-item-action">
+
+			Modifier mes informations
+		</a>
+
+		<a href="{{ path('account_orders') }}" class="list-group-item list-group-item-action">
+			Mes commandes
+		</a>
+		{# <a href="{{ path('account_address') }}" class="list-group-item list-group-item-action">
+															Gérer mes adresses
+														</a> #}
+
+	</div>
+
+
+{% endblock %}

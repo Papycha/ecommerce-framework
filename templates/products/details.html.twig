@@ -2,6 +2,8 @@
 
 {% block title %}
 	{{product.title}}
+	- Marsyclebook
+
 {% endblock %}
 
 {% block body %}
@@ -9,17 +11,23 @@
 
 		<div class="col">
 			<div class="card shadow-sm">
-				<img class="card-img-top" src="{{asset('images/livre1.png')}}" alt="Card image cap">
+
 
 				<div class="card-body">
-					<h1>
+					<h3>
 						Details de
 						{{product.title}}
-					</h1>
+					</h3>
+
+					{% for image in product.images %}
+						<div>
+							<img src="{{ asset('images/products/mini/300x300-' ~ image.name ) }}" alt="Image" width="150">
+						</div>
+					{% endfor %}
+
 
 					<p class="card-text">
 						Categorie:
-						{# {{ dump(product) }} #}
 
 
 						{{product.categories.name}}
@@ -37,7 +45,7 @@
 
 
 					<p class="card-text">
-						{{product.price}}
+						{{product.price/100}}
 
 						EUR</p>
 					<p class="card-text">
@@ -51,11 +59,8 @@
 						<div class="d-flex justify-content-between align-items-center">
 							<div class="btn-group">
 								<button type="button" class="btn btn-sm btn-outline-secondary">
-									<a class="" style="text-decoration:none" href=" {{path('product_details', {id:product.id})}}  ">Acheter le produit</a>
-
-
+									<a class="" style="text-decoration:none" href=" {{ path('add_to_cart', {id: product.id}) }}  ">Acheter le produit</a>
 								</button>
-								<a href="{{ path('add_to_cart', {id: product.id}) }}" class="btn btn-outline-success">Ajouter au panier</a>
 
 
 							</div>
@@ -70,8 +75,6 @@
 
 						</div>
 					{% endif %}
-
-					{# {{ dump(product.productsDetails) }} #}
 
 
 				</div>

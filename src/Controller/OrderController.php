@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Orders;
 use App\Entity\OrdersDetails;
-// use App\Form\OrdersType;
+use App\Form\OrdersType;
 use App\Model\Cart;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -43,6 +43,11 @@ class OrderController extends AbstractController
             'user' => $user     //Permet de passer l'utilisateur courant dans le tableau d'options du OrderType
         ]);
 
+        // return $this->render('order/index.html.twig', [
+        //     'form' => $form,
+        //     'cart' => $cartProducts,
+        //     'totalPrice' => $cartProducts['totals']['price']
+        // ]);
         return $this->render('order/index.html.twig', [
             'form' => $form,
             'cart' => $cartProducts,

@@ -79,6 +79,6 @@ class CartController extends AbstractController
     public function remove(Cart $cart): Response
     {
         $cart->remove();
-        return $this->redirectToRoute('product');
+        return $this->redirectToRoute('index');
     }
 }

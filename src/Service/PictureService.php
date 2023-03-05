@@ -15,7 +15,7 @@ class PictureService
         $this->params = $params;
     }
 
-    public function add(UploadedFile $picture, ?string $folder = '', ?int $width = 250, ?int $height = 250)
+    public function add(UploadedFile $picture, ?string $folder = '', ?int $width = 450, ?int $height = 450)
     {
         // On donne un nouveau nom à l'image
         $fichier = md5(uniqid(rand(), true)) . '.webp';
@@ -23,12 +23,12 @@ class PictureService
         // On récupère les infos de l'image
         $picture_infos = getimagesize($picture);
 
-        if($picture_infos === false){
+        if ($picture_infos === false) {
             throw new Exception('Format d\'image incorrect');
         }
 
         // On vérifie le format de l'image
-        switch($picture_infos['mime']){
+        switch ($picture_infos['mime']) {
             case 'image/png':
                 $picture_source = imagecreatefrompng($picture);
                 break;
@@ -48,7 +48,7 @@ class PictureService
         $imageHeight = $picture_infos[1];
 
         // On vérifie l'orientation de l'image
-        switch ($imageWidth <=> $imageHeight){
+        switch ($imageWidth <=> $imageHeight) {
             case -1: // portrait
                 $squareSize = $imageWidth;
                 $src_x = 0;
@@ -69,12 +69,31 @@ class PictureService
         // On crée une nouvelle image "vierge"
         $resized_picture = imagecreatetruecolor($width, $height);
 
-        imagecopyresampled($resized_picture, $picture_source, 0, 0, $src_x, $src_y, $width, $height, $squareSize, $squareSize);
+        $white = imagecolorallocate(
+            $resized_picture,
+            255,
+            255,
+            255
+        );
+        imagefill($resized_picture, 0, 0, $white);
+
+        imagecopyresampled(
+            $resized_picture,
+            $picture_source,
+            0,
+            0,
+            $src_x,
+            $src_y,
+            $width,
+            $height,
+            $squareSize,
+            $squareSize
+        );
 
         $path = $this->params->get('images_directory') . $folder;
 
         // On crée le dossier de destination s'il n'existe pas
-        if(!file_exists($path . '/mini/')){
+        if (!file_exists($path . '/mini/')) {
             mkdir($path . '/mini/', 0755, true);
         }
 
@@ -88,20 +107,20 @@ class PictureService
 
     public function delete(string $fichier, ?string $folder = '', ?int $width = 250, ?int $height = 250)
     {
-        if($fichier !== 'default.webp'){
+        if ($fichier !== 'default.webp') {
             $success = false;
             $path = $this->params->get('images_directory') . $folder;
 
             $mini = $path . '/mini/' . $width . 'x' . $height . '-' . $fichier;
 
-            if(file_exists($mini)){
+            if (file_exists($mini)) {
                 unlink($mini);
                 $success = true;
             }
 
             $original = $path . '/' . $fichier;
 
-            if(file_exists($original)){
+            if (file_exists($original)) {
                 unlink($original);
                 $success = true;
             }

@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mon panier
+{% block title %}Mon panier - Marsyclebook
+
 {% endblock %}
 
 {% block body %}
@@ -28,7 +29,7 @@
 			{% for item in cart %}
 				<tr>
 					<td class="align-middle">
-						<img height="60px" src="/uploads/{{ item.product.image }}" alt="{{ item.product.title }}">
+
 						{{item.product.title}}
 					</td>
 					<td class="align-middle">{{(item.product.price / 100)|number_format(2,',','.') }}
@@ -62,9 +63,9 @@
 				€</th>
 		</tfoot>
 	</table>
-	<a class="mb-3 d-block" href="{{ path('index') }}">Continuez mes achats</a>
+
 	{% if totalQuantity > 0 %}
-		<a href="{{ path('order')}}" title="Valider puis passer au paiement" class="btn btn-outline-success btn-block"></i>
+		<a href="#" class="btn btn-outline-success btn-block"></i>
 		Valider mon panier</a>
 {% else %}
 	Votre panier est vide, remplissez le depuis la page

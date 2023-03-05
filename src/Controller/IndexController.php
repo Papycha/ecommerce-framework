@@ -38,6 +38,11 @@ class IndexController extends AbstractController
         return $this->render('index/about.html.twig');
     }
 
+    #[Route('/mentionsLegales', name: 'mentionsLegales')]
+    public function mentionsLegales(): Response
+    {
+        return $this->render('index/mentionsLegales.html.twig');
+    }
 
 
 

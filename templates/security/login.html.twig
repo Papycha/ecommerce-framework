@@ -1,50 +1,56 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!
-{% endblock %}
+{% block title %}Connexion{% endblock %}
+
+{# {% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .login-page {
+            background-image: url("asset('images/fondEcranLogin.jpg')");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            filter: blur(5px);
+        }
+    </style>
+{% endblock %} #}
 
 {% block body %}
-	<form method="post">
-		{% if error %}
-			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-		{% endif %}
+<div class="container login-page">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border border-dark shadow" style="background-color: #ddc9c9">
+                <div class="card-body">
+                    <h2 class="h4 mb-3 mt-3 font-weight-normal text-center">SE CONNECTER</h2>
+                    <form method="post" class="needs-validation" novalidate>
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
 
-		{% if app.user %}
-			<div class="mb-3">
-				You are logged in as
-				{{ app.user.userIdentifier }},
-				<a href="{{ path('app_logout') }}">Logout</a>
-			</div>
-		{% endif %}
-		<div class="container">
-			<h1 class="h3 mb-3 font-weight-normal">Me connecter</h1>
-			<label for="inputEmail">Email</label>
-			<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-			<label for="inputPassword">Password</label>
-			<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                        {% if app.user %}
+                            <div class="mb-3">
+                                Vous êtes connecté(e) en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
+                            </div>
+                        {% endif %}
 
-			<input
-			type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                        <label for="inputEmail">Email :</label>
+                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                        <label class="mt-3" for="inputPassword">Mot de passe :</label>    
+                        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                        {# <div class="mt-3"><a href="{{ path('reset_password') }}" class="text-dark">Mot de passe oublié ?</a></div> #}
 
-			{#
-																								        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-																								        See https://symfony.com/doc/current/security/remember_me.html
-																								
-																								        <div class="checkbox mb-3">
-																								            <label>
-																								                <input type="checkbox" name="_remember_me"> Remember me
-																								            </label>
-																								        </div>
-																								    #}
+                        <input type="hidden" name="_csrf_token"
+                            value="{{ csrf_token('authenticate') }}"
+                        >
 
-			<button class="btn btn-lg btn-primary" type="submit">
-				Me connecter
-			</button>
-
-			<a class="nav-link" href="{{ path('app_register') }}">M'inscrire</a>
-
-
-		</form>
-	</div>
-
+                        <button class="btn btn-lg btn-outline-dark mt-5 mx-auto d-block" type="submit">
+                            Se connecter
+                        </button>
+                    </form>
+                    <p class="mt-3 text-center">Vous n'avez pas de compte ? <a href="{{ path('creerCompteP') }}" class="text-dark">S'inscrire</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

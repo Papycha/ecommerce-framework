@@ -5,4 +5,67 @@
 
 {% block body %}
 	<h1>Administration des produits</h1>
+	<a class="nav-link" href="{{ path('admin_produits_add') }}">
+		Ajouter un produit
+	</a>
+
+
+	<div
+		class="container">
+		{#{{dump()}} #}
+		<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-2">
+
+			{% for product in products %}
+				<div class="col">
+					<div class="card shadow-sm">
+
+						<img class="card-img-top" src="{{asset('assets/images/products/mini/300x300-' ~ product.images[0].name)}}" alt="{{product.title}}">
+
+
+						<div class="card-body">
+							<p class="card-text">{{product.title}}
+							</p>
+
+							<p class="card-text">
+								{{product.author}}
+							</p>
+
+
+							<p class="card-text">
+								{{product.genre}}
+							</p>
+
+
+							<p
+								class="card-text">
+								{# {{item.price}} #}
+								EUR</p>
+
+							<div class="d-flex justify-content-between align-items-center">
+
+								<div class="btn-group">
+									<button type="button" class="btn btn-sm btn-outline-secondary">
+										<a class="" style="text-decoration:none" href=" {{path('admin_produits_edit', {id:product.id})}}  ">Modifier</a>
+
+									</button>
+								</div>
+								<div class="btn-group">
+									<button type="button" class="btn btn-sm btn-outline-secondary">
+										<a class="" style="text-decoration:none" href=" {{path('admin_produits_delete', {id:product.id})}}  ">Suprimmer</a>
+									</button>
+								</div>
+
+
+								<small class="text-muted">9 mins</small>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor  %}
+
+
+		</div>
+	</div>
+
+
 {% endblock %}

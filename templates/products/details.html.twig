@@ -52,7 +52,12 @@
 							<div class="btn-group">
 								<button type="button" class="btn btn-sm btn-outline-secondary">
 									<a class="" style="text-decoration:none" href=" {{path('product_details', {id:product.id})}}  ">Acheter le produit</a>
+
+
 								</button>
+								<a href="{{ path('add_to_cart', {id: product.id}) }}" class="btn btn-outline-success">Ajouter au panier</a>
+
+
 							</div>
 						</div>
 

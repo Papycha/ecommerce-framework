@@ -38,12 +38,9 @@
 								<a class="nav-link active" aria-current="page" href="{{path('index')}}">ACCUEIL
 								</a>
 							</li>
-							{# <li class="nav-item">
-																																				<a class="nav-link" href="{{path('index')}}">BOUTIQUE</a>
-																												
-																																			</li> #}
+
 							<li class="nav-item">
-								<a class="nav-link" href="#">NOS SERVICES</a>
+								<a class="nav-link" href="#">NOTRE BOUTIQUE</a>
 							</li>
 						</ul>
 
@@ -64,6 +61,13 @@
 						<li class="nav-item">
 							<a class="nav-link" href="{{ path('app_logout') }}">Me déconnecter</a>
 						</li>
+						{% if is_granted('ROLE_ADMIN') %}
+							<li class="nav-item">
+								<a class="nav-link" href="{{ path('admin') }}">Admin Panel</a>
+
+
+							</li>
+						{% endif %}
 					{% else %}
 						<li class="nav-item">
 							<a class="nav-link" href="{{ path('app_register') }}">M'inscrire</a>
@@ -72,13 +76,16 @@
 							<a class="nav-link" href="{{ path('app_login') }}">Me Connecter</a>
 						</li>
 					{% endif %}
+
+
 				</ul>
 
 
 				<a class="navbar-brand" href="{{path('connexion')}}">
 					<img src="{{asset('images/user.png')}}" width="50px" alt="user image">
 				</a>
-				<a class="navbar-brand" href=" ">
+				<a class="navbar-brand" href="{{path('cart')}}">
+
 
 					<img src="{{asset('images/buy.png')}}" width="50px" alt="Card image cap">
 				</a>
@@ -88,24 +95,15 @@
 		</header>
 		{# HEADER END #}
 
-		{# {% if app.user and app.user.isVerified == false %}
-					<div class="alert alert-warning alert-dismissible" role="alert">
-						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-						<div class="alert-message">
-							<strong>Votre compte n'est pas activé</strong>,
-							<a href="{{ path('resend_verif') }}">renvoyer le lien d'activation</a>
-						</div>
-					</div>
-				{% endif %} #}
-
 
 		{# CARTS BLOCK END#}
 
 
-			{% block body %}
+		{% block body %}
 
 
-				<div class="flex-shrink-0 p-3 bg-white" style="width: 280px;"> <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+			<div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+				<a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
 					<svg class="bi pe-none me-2" width="30" height="24">
 						<use xlink:href="#bootstrap"></use>
 					</svg>
@@ -250,61 +248,10 @@
 					<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
 						<a class="text-white" href="">@ 	Mentions légales - 2023</a>
 					</div>
+
+
 				</footer>
-				{# <footer class="py-3 my-4">
-																																													<a class="navbar-brand" href="#">
-																																														<img src="{{asset('images/logo.png')}}" width="50px" alt="Card image cap">
-																																													</a>
-																																								
-																																													<ul class="nav justify-content-center border-bottom pb-3 mb-3">
-																																														<div class="row justify-content-between">
-																																															<div class="col-4">
-																																																<li class="nav-item">
-																																																	<a href="#" class="nav-link px-2 text-muted">Accueil</a>
-																																																</li>
-																																																<li class="nav-item">
-																																																	<a href="#" class="nav-link px-2 text-muted">Boutique</a>
-																																																</li>
-																																															</div>
-																																															<div class="col-4">
-																																																<li class="nav-item">
-																																																	<a href="#" class="nav-link px-2 text-muted">Services</a>
-																																																</li>
-																																																<li class="nav-item">
-																																																	<a href="#" class="nav-link px-2 text-muted">Collecte</a>
-																																																</li>
-																																																<li class="nav-item">
-																																																	<a href="#" class="nav-link px-2 text-muted">Rachat</a>
-																																																</li>
-																																								
-																																															</div>
-																																														</div>
-																																								
-																																								
-																																													</ul>
-																																								
-																																													<div class="row justify-content-end">
-																																								
-																																														<div class="col">
-																																															Mentions légales - 2023
-																																														</div>
-																																														<div class="col">
-																																															
-																																														<a class="navbar-brand" href="https://www.instagram.com/">																																																																																																																															<a class=" navbar-brand" href=" #">
-																																															<img src="{{asset('images/instagram.png')}}" width="50px" alt="Card image cap">
-																																														</a>
-																																														<a class="navbar-brand" href="https://fr-fr.facebook.com/">
-																																															<img src="{{asset('images/facebook.png')}}" width="50px" alt="Card image cap">
-																																														</a>
-																																														<a class="navbar-brand" href="https://www.linkedin.com/">
-																																															<img src="{{asset('images/linkedin.png')}}" width="50px" alt="Card image cap">
-																																														</a>
-																																								
-																																													</div>
-																																								
-																																								
-																																												</div> #}
-			</footer>
+			</body>
 		</body>
 	</html>
 </div>{% endblock %}</body></html>

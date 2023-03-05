@@ -7,10 +7,16 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+// use App\Entity\Traits\CreatedAtTrait;
+use App\Entity\Traits\SlugTrait;
 
 #[ORM\Entity(repositoryClass: ProductsRepository::class)]
 class Products
 {
+    // use CreatedAtTrait;
+    use SlugTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -41,7 +47,12 @@ class Products
     private ?int $price = null;
 
     #[ORM\Column]
+    #[Assert\PositiveOrZero(message: 'Le stock ne peut pas être négatif')]
     private ?int $inStock = null;
+
+    // #[ORM\Column(length: 255)]
+    // private ?string $slug = null;
+
 
 
 
@@ -52,7 +63,8 @@ class Products
     // #[ORM\OneToMany(mappedBy: 'products', targetEntity: ProductsDetails::class)]
     // private Collection $productsDetails;
 
-
+    #[ORM\OneToMany(mappedBy: 'products', targetEntity: Images::class, orphanRemoval: true, cascade: ['persist'])]
+    private $images;
 
     #[ORM\OneToMany(mappedBy: 'products', targetEntity: OrdersDetails::class)]
     private Collection $ordersDetails;
@@ -68,7 +80,7 @@ class Products
     public function __construct()
     {
         // $this->productsDetails = new ArrayCollection();
-
+        $this->images = new ArrayCollection();
         $this->ordersDetails = new ArrayCollection();
         $this->comments = new ArrayCollection();
     }
@@ -228,6 +240,35 @@ class Products
     //     return $this;
     // }
 
+    /**
+     * @return Collection|Images[]
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Images $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setProducts($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Images $image): self
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getProducts() === $this) {
+                $image->setProducts(null);
+            }
+        }
+
+        return $this;
+    }
 
     /**
      * @return Collection<int, OrdersDetails>
@@ -300,4 +341,9 @@ class Products
 
         return $this;
     }
+
+    // public function setSlug(string $slug): void
+    // {
+    //     $this->slug = $slug;
+    // }
 }

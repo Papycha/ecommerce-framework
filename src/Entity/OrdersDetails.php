@@ -16,6 +16,9 @@ class OrdersDetails
     #[ORM\Column]
     private ?int $price = null;
 
+    #[ORM\Column(type: 'float')]
+    private $total;
+
     #[ORM\Id]
     #[ORM\ManyToOne(inversedBy: 'ordersDetails')]
     #[ORM\JoinColumn(nullable: false)]
@@ -73,4 +76,21 @@ class OrdersDetails
 
         return $this;
     }
+
+    public function getTotal(): ?float
+    {
+        return $this->total;
+    }
+
+    public function setTotal(float $total): self
+    {
+        $this->total = $total;
+
+        return $this;
+    }
+
+    // public function __toString()
+    // {
+    //     return $this->getProducts() . 'x' . $this->getQuantity();
+    // }
 }

@@ -8,11 +8,19 @@ use App\Entity\Categories;
 use App\Entity\Products;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\String\Slugger\SluggerInterface;
 use Faker;
 
 
 class ProductsFixtures extends Fixture
 {
+    private $slugger;
+
+    public function __construct(SluggerInterface $slugger)
+    {
+        $this->slugger = $slugger;
+    }
+
     public function load(ObjectManager $manager): void
     {
         $product = new Products();
@@ -28,6 +36,7 @@ class ProductsFixtures extends Fixture
         $product->setImage('book1.png');
         $category = $this->getReference('cat-3');
         $product->setCategories($category);
+        //  $product->setSlug($this->slugger->slug($product->getTitle())->lower());
         $this->setReference('prod-1', $product);
         $manager->persist($product);
 
@@ -46,6 +55,7 @@ class ProductsFixtures extends Fixture
         $product->setImage('book2.png');
         $category = $this->getReference('cat-5');
         $product->setCategories($category);
+        //  $product->setSlug($this->slugger->slug($product->getTitle())->lower());
         $this->setReference('prod-2', $product);
         $manager->persist($product);
 
@@ -63,6 +73,7 @@ class ProductsFixtures extends Fixture
         $product->setImage('book3.png');
         $category = $this->getReference('cat-1');
         $product->setCategories($category);
+        // $product->setSlug($this->slugger->slug($product->getTitle())->lower());
         $this->setReference('prod-3', $product);
         $manager->persist($product);
 

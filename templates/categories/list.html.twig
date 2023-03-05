@@ -14,10 +14,21 @@
 			{% for product in category.products %}
 				<div class="col">
 					<div class="card shadow-sm">
-						<img class="card-img-top" src="{{asset('images/livre1.png')}}" alt="Card image cap">
 
 						<div class="card-body">
-							<p class="card-text">{{product.title}}
+							{% for image in product.images %}
+								<div>
+									<img src="{{ asset('images/products/mini/300x300-' ~ image.name ) }}" alt="Image" width="150">
+								</div>
+							{% endfor %}
+
+
+							<p class="card-text">
+								<h5>{{product.title}}
+
+								</h5>
+
+
 							</p>
 
 							<p class="card-text">

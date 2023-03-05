@@ -44,39 +44,43 @@
 								{% endfor %}
 
 
-								<p class="card-text">{{product.title}}
-								</p>
-
 								<p class="card-text">
-									{{product.author}}
+									<h5>{{product.title}}
+
+									</h5>
 								</p>
 
+							</p>
 
-								<p class="card-text">
-									{{product.genre}}
-								</p>
+							<p class="card-text">
+								{{product.author}}
+							</p>
 
 
-								<p
-									class="card-text">
-									{# {{item.price}} #}
-									EUR</p>
+							<p class="card-text">
+								{{product.genre}}
+							</p>
 
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<button type="button" class="btn btn-sm btn-outline-secondary">
-											<a class="" style="text-decoration:none" href=" {{path('product_details', {id:product.id})}}  ">Voir le produit</a>
-										</button>
-									</div>
-									<small class="text-muted">9 mins</small>
+
+							<p
+								class="card-text">
+								{# {{item.price}} #}
+								EUR</p>
+
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="btn-group">
+									<button type="button" class="btn btn-sm btn-outline-secondary">
+										<a class="" style="text-decoration:none" href=" {{path('product_details', {id:product.id})}}  ">Voir le produit</a>
+									</button>
 								</div>
+								<small class="text-muted">9 mins</small>
 							</div>
 						</div>
 					</div>
-				{% endfor  %}
+				</div>
+			{% endfor  %}
 
 
-			</div>
 		</div>
 	</div>
-{% endblock %}
+</div>{% endblock %}
